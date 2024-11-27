@@ -1,0 +1,159 @@
+
+{% load widget_tweaks %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Design Page</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .main {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            background-color: #444;
+            width: 200px;
+            padding: 20px;
+            color: #fff;
+        }
+        .sidebar h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            background-color: #555;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #007bff;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        h1 {
+            color: #d6cece;
+            margin-bottom: 20px;
+        }
+        .btn-create {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        .btn-create:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        th.sorting, th.sorting_asc, th.sorting_desc {
+            background-color: #f4f4f4;
+        }
+        th.sorting:hover, th.sorting_asc:hover, th.sorting_desc:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Student Dashboard</h1>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+            <h3>Sidebar</h3>
+            <ul>
+                <li><a href="{% url 'students:student-dashboard' %}">JOB LIST</a></li>
+                <li><a href="{% url 'students:profile_list_view' %}">ALUMNI LIST</a></li>
+                <li><a href="{% url 'students:message_list' %}">MESSAGE LIST</a></li>
+                <li><a href="{% url 'students:Group_list' %}">Group Base On Year</a></li>
+                <li><a href="{% url 'students:logout_view' %}">Logout</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Group List</h1>
+            <table id="message_list">
+                <thead>
+                    <tr>
+                        <th>{{ year}} Name List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alumni in alumni_list %}
+                    <tr>
+                        <td>{{ alumni.get_name }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#message_list').DataTable({
+                "ordering": false
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock content %}

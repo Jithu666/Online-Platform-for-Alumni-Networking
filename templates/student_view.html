@@ -1,0 +1,38 @@
+<!-- student_view.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Messaging</title>
+</head>
+<body>
+    <h1>Welcome, {{ student.get_name }}</h1>
+    
+    <!-- Display received messages -->
+    <h2>Received Messages:</h2>
+    <ul>
+        {% for message in received_messages %}
+            <li>
+                From: {{ message.get_sender_name }}<br>
+                Text: {{ message.text }}<br>
+                {% if message.image %}
+                    <img src="{{ message.image.url }}" alt="Message Image"><br>
+                {% endif %}
+                {% if message.file %}
+                    <a href="{{ message.file.url }}">Download File</a><br>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Form to send a message -->
+    <h2>Send Message:</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>

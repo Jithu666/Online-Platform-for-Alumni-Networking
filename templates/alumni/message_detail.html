@@ -1,0 +1,177 @@
+{% load widget_tweaks %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Portal</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .main {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            background-color: #444;
+            width: 200px;
+            padding: 20px;
+            color: #fff;
+        }
+        .sidebar h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            background-color: #555;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #007bff;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        h1 {
+            color: #d6cece;
+            margin-bottom: 20px;
+        }
+        .btn-create {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        .btn-create:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        th.sorting, th.sorting_asc, th.sorting_desc {
+            background-color: #f4f4f4;
+        }
+        th.sorting:hover, th.sorting_asc:hover, th.sorting_desc:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Alumni Dashboard</h1>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+            <h3>Sidebar</h3>
+            <ul>
+                <li><a href="{% url 'alumnis:alumni-dashboard' %}">JOB LIST</a></li>
+                <li><a href="{% url 'alumnis:message_list' %}">MESSAGE LIST</a></li>
+                <li><a href="{% url 'alumnis:alumnilogout' %}">LOGOUT</a></li>
+
+           
+
+                
+            </ul>
+        </div>
+        <div class="content">
+            <h1>Messages</h1>
+            <a href="{% url 'alumnis:message_create' %}" class="btn-create">Create New Message1</a>
+            <table id="message_list">
+                <thead>
+                    <tr>
+                        <th>Message</th>
+                        <th>Image</th>
+                        <th>File</th>
+                        <th>Posted By</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for message in messages %}
+                    <tr>
+                        <td>{{ message.text }}</td>
+                        <td>
+                            {% if message.image %}
+                                <img src="{{ message.image.url }}" alt="Image" style="max-width: 100px; height: auto;" />
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if message.file %}
+                                <a href="{{ message.file.url }}">{{ message.file.name }}</a>
+                            {% endif %}
+                        </td>
+                        <td>{{ message.user }}</td>
+                        <td>{{ message.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+         $(document).ready(function() {
+            $('#message_list').DataTable({
+                "ordering": false
+            });
+        });
+    </script>
+</body>
+</html>
+{% endblock content %}

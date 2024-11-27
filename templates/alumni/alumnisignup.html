@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Alumni Signup</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .signup-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .signup-header {
+            text-align: center;
+            color: #dc3545;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="signup-container">
+    <h3 class="signup-header">Alumni SIGNUP</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'alumnis:alumnisignup' %}">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="username">Username</label>
+                {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="Username" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="password">Password</label>
+                {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="Password" %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="First Name" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Last Name" %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="mobile">Mobile</label>
+                {% render_field alumniForm.mobile|attr:'required:true' class="form-control" placeholder="Mobile" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="address">Address</label>
+                {% render_field alumniForm.address|attr:'required:true' class="form-control" placeholder="Address" %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="profile_pic">Profile Picture</label>
+                {% render_field alumniForm.profile_pic|attr:'required:true' class="form-control-file" %}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="linkedin_link">LinkedIn Link</label>
+                {% render_field alumniForm.LinkedIn_link|attr:'required:true' class="form-control" placeholder="LinkedIn Link" %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="year_of_pass">Year of Passing</label>
+                {% render_field alumniForm.year_of_pass|attr:'required:true' class="form-control" placeholder="Year of Passing" %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

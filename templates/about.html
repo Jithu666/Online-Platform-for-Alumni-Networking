@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About - Alumnu's{% endblock %}
+{% block body_class %}about-page{% endblock %}
+
+{% block content %}
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+  <div class="heading">
+    <div class="container">
+      <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1 class="">About Us<br></h1>
+          <p class="mb-0">Join us on this exciting journey of growth and camaraderie. Together, let's harness the full potential of our alumni community and pave the way for a brighter future. Where memories flourish, networks thrive, and opportunities abound.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="{% url 'Home' %}">Home</a></li>
+        <li class="current">About Us<br></li>
+      </ol>
+    </div>
+  </nav>
+</div><!-- End Page Title -->
+
+<!-- About Us Section -->
+<section id="about-us" class="section about-us">
+
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+        <img src="{% static 'assets/img/about-2.jpg' %}" class="img-fluid" alt="">
+      </div>
+
+      <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
+        <h3>To empower alumni to reconnect, engage, and succeed together</h3>
+        <p class="fst-italic">
+          Founded with the mission of fostering a lifelong connection between alumni and their alma mater, Alumnu's has become a thriving community where memories are cherished, and futures are shaped.
+        </p>
+        <ul>
+          <li><i class="bi bi-check-circle-fill"></i> Reconnect: Reunite with classmates, friends, and mentors through exclusive events, reunions, and online platforms.</li>
+          <li><i class="bi bi-check-circle-fill"></i> Engage: Stay engaged with the latest news, updates, and achievements of our institution and fellow alumni.</li>
+          <li><i class="bi bi-check-circle-fill"></i> Succeed: Leverage a powerful network of professionals, entrepreneurs, and leaders to advance your career and personal growth.</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End About Us Section -->
+
+<!-- Our Values Section -->
+<section id="our-values" class="section">
+
+  <div class="container">
+
+    <div class="section-header">
+      <h2 class="text-center">Our Values<br></h2>
+      <p class="text-center">We are driven by values that define who we are and what we stand for</p>
+    </div>
+
+    <div class="row gy-4">
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="value-box text-center">
+          <i class="bi bi-people-fill"></i>
+          <h3>Community</h3>
+          <p>We believe in the strength of community and the power of belonging.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="value-box text-center">
+          <i class="bi bi-lightbulb-fill"></i>
+          <h3>Innovation</h3>
+          <p>We embrace innovation to continuously improve and stay relevant.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="value-box text-center">
+          <i class="bi bi-hand-thumbs-up-fill"></i>
+          <h3>Excellence</h3>
+          <p>We strive for excellence in all that we do, setting high standards for ourselves and others.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="value-box text-center">
+          <i class="bi bi-globe2"></i>
+          <h3>Global Impact</h3>
+          <p>We aim to make a positive impact on a global scale, connecting alumni across the world.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section><!-- End Our Values Section -->
+
+{% endblock %}

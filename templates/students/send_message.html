@@ -1,0 +1,181 @@
+{% load widget_tweaks %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Message</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .main {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            background-color: #444;
+            width: 200px;
+            padding: 20px;
+            color: #fff;
+        }
+        .sidebar h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            background-color: #555;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #007bff;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container form .form-field {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .form-container form .form-field input,
+        .form-container form .form-field textarea,
+        .form-container form .form-field select {
+            width: calc(100% - 40px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+        .form-container form .form-field input:focus,
+        .form-container form .form-field textarea:focus,
+        .form-container form .form-field select:focus {
+            border-color: #007bff;
+        }
+        .form-container form .form-field label {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background-color: #fff;
+            padding: 0 5px;
+            color: #aaa;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+        .form-container form .form-field input:focus + label,
+        .form-container form .form-field input:not(:placeholder-shown) + label,
+        .form-container form .form-field textarea:focus + label,
+        .form-container form .form-field textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            color: #007bff;
+            font-size: 12px;
+        }
+        .form-container form .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-container form .form-field button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-container form .form-field button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>student Dashboard</h1>
+    </div>
+    <div class="main">
+        <div class="sidebar">
+            <h3>Sidebar</h3>
+            <ul>
+                <li><a href="{% url 'students:student-dashboard' %}">JOB LIST</a></li>
+                <li><a href="{% url 'students:profile_list_view' %}">ALUMNI LIST</a></li>
+                <li><a href="{% url 'students:message_list' %}">MESSAGE LIST</a></li>
+                <li><a href="{% url 'students:Group_list' %}">Group Base On Year</a></li>
+                <li><a href="{% url 'students:logout_view' %}">LOGOUT</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="form-container">
+                <h2>Create New Message</h2>
+                <form method="post" enctype="multipart/form-data" action="{% url 'students:message_create' %}">
+                    {% csrf_token %}
+                    
+                    <div class="form-field">
+                        <label for="text">Message</label>
+                        <textarea id="text" name="text" rows="4" cols="50"></textarea>
+                    </div>
+                    <div class="form-field">
+                        <label for="image">Image</label>
+                        <input type="file" id="image" name="image">
+                    </div>
+                    <div class="form-field">
+                        <label for="file">File</label>
+                        <input type="file" id="file" name="file">
+                    </div>
+                    <div class="form-field">
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

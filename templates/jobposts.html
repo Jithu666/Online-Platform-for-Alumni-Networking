@@ -1,0 +1,92 @@
+<!-- templates/jobposts.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Job Postings - Alumnu's
+{% endblock %}
+
+{% block body_class %}
+courses-page
+{% endblock %}
+
+{% block content %}
+<!-- Page Title -->
+<div class="page-title" data-aos="fade">
+  <div class="heading">
+    <div class="container">
+      <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1>Job Postings</h1>
+          <p class="mb-0">We believe in harnessing the power of our network to create meaningful opportunities for both our current members and esteemed alumni. We are excited to introduce our innovative Job Postings Section, where career opportunities are sourced directly from the vibrant conversations and updates shared by our alumni.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="{% url 'Home' %}">Home</a></li>
+        <li class="current">Job Postings</li>
+      </ol>
+    </div>
+  </nav>
+</div><!-- End Page Title -->
+
+<!-- Courses Section -->
+<section id="courses" class="courses section">
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+        <div class="course-item">
+          <img src="{% static 'assets/img/jobposting/job1.jpg' %}" class="img-fluid" alt="...">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>Full Stack Developer</h4>
+            </div>
+            <h3><a href="jobpost-detail.html">Web Development</a></h3>
+            <p>Seeking a Full Stack Developer to join our dynamic team. The ideal candidate will have a strong understanding of web development technologies and experience with both front-end and back-end development.</p>
+            <p><strong>Location:</strong> New York, NY</p>
+            <p><strong>Experience:</strong> 3-5 years</p>
+          </div>
+        </div>
+      </div><!-- End Course Item -->
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
+        <div class="course-item">
+          <img src="{% static 'assets/img/jobposting/job2.jpg' %}" class="img-fluid" alt="...">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>Project Manager</h4>
+            </div>
+            <h3><a href="jobpost-detail.html">Management</a></h3>
+            <p>We are looking for a skilled Project Manager to oversee our software development projects. The candidate must have excellent leadership skills and the ability to manage cross-functional teams.</p>
+            <p><strong>Location:</strong> San Francisco, CA</p>
+            <p><strong>Experience:</strong> 5-7 years</p>
+          </div>
+        </div>
+      </div><!-- End Course Item -->
+
+      <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
+        <div class="course-item">
+          <img src="{% static 'assets/img/jobposting/job3.jpg' %}" class="img-fluid" alt="...">
+          <div class="course-content">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>UI/UX Designer</h4>
+            </div>
+            <h3><a href="jobpost-detail.html">Design</a></h3>
+            <p>Looking for a creative UI/UX Designer with a passion for designing intuitive user experiences. The candidate should have a strong portfolio showcasing their design skills and user-centric approach.</p>
+            <p><strong>Location:</strong> Austin, TX</p>
+            <p><strong>Experience:</strong> 2-4 years</p>
+          </div>
+        </div>
+      </div><!-- End Course Item -->
+
+    </div>
+
+  </div>
+
+</section><!-- End Courses Section -->
+{% endblock %}
