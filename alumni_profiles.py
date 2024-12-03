@@ -66,8 +66,8 @@ def extract_info(data):
     
     return extracted_info
 
-username = 'ksseena30@gmail.com'
-password = '9066949892'
+username = 'ks@gmail.com'
+password = '90*******2'
 api = Linkedin(username, password)
 
 # Specify the LinkedIn profile usernames
